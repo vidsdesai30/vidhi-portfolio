@@ -1,6 +1,7 @@
 services:
   - type: web
     name: vidhi-portfolio
+    plan: free
     runtime: node
     buildCommand: npm install && npm run build
     startCommand: npm start
