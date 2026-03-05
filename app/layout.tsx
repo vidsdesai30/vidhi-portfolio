@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Vidhi Desai ✌️",
+  title: "🪐",
   description: "Vidhi Desai — a developer by profession, a creative at heart.",
   authors: [{ name: "Vidhi Desai" }],
   keywords: ["Vidhi Desai", "Frontend Developer", "React", "Portfolio", "Creative Developer"],
