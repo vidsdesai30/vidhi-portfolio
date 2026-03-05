@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+
+:root {
+  --color-bg: #05080f;
+  --color-text: #f0ece3;
+  --color-text-muted: rgba(240, 236, 227, 0.45);
+  --color-accent: #c8b89a;
+  --color-sky-day: #a8d8ea;
+  --transition-theme: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="day"] {
+  --color-bg: #d6eef8;
+  --color-text: #1a1a2e;
+  --color-text-muted: rgba(26, 26, 46, 0.5);
+  --color-accent: #4a7fa5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Inter", sans-serif;
+  transition: var(--transition-theme);
+  overscroll-behavior: none;
+}
+
+::selection {
+  background: rgba(200, 184, 154, 0.3);
+  color: var(--color-text);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 184, 154, 0.3);
+  border-radius: 2px;
+}
+
+/* Typography */
+.font-serif {
+  font-family: "Playfair Display", serif;
+}
+
+.font-sans {
+  font-family: "Inter", sans-serif;
+}
+
+/* Utility */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Canvas full-screen */
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Scroll container */
+.scroll-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section heights for scroll triggers */
+.section-hero {
+  height: 280vh;
+}
+
+/* Door cinematic sequence spacer */
+.section-door {
+  height: 220vh;
+}
+
+/* Portal tunnel transition — extra scroll for falling-through effect */
+.section-portal {
+  height: 160vh;
+}
+
+.section-hub {
+  height: 300vh;
+}
+
+.section-footer {
+  height: 100vh;
+}
+
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(5, 8, 15, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 4rem 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ScrollHint */
+@keyframes bounce-y {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.scroll-hint {
+  animation: bounce-y 2s ease-in-out infinite;
+}
+
+/* Painting card hover */
+.painting-card {
+  cursor: pointer;
+  transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.painting-card:hover {
+  transform: scale(1.03) translateY(-4px);
+  filter: brightness(1.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Link hover underline effect */
+.hover-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Scattered text animation */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(4px) rotate(-0.5deg);
+  }
+}
+
+.float-letter {
+  display: inline-block;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Day transition sky color */
+.sky-gradient {
+  background: linear-gradient(180deg, var(--color-bg) 0%, transparent 100%);
+  transition: background 0.8s ease;
+}
